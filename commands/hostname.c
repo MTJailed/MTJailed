@@ -9,8 +9,8 @@
 #include "hostname.h"
 char* ADVCMDS_GETHOSTNAME()
 {
-    static char hostname[_POSIX_HOST_NAME_MAX];
-    gethostname(hostname, _POSIX_HOST_NAME_MAX);
+    static char hostname[_POSIX_HOST_NAME_MAX]; //we won't overflow as the we take the maximum hostname size as buffer size
+    gethostname(hostname, _POSIX_HOST_NAME_MAX); //store the hostname in the buffer (gethostname comes down to a sysctl call)
     return hostname;
 }
 
